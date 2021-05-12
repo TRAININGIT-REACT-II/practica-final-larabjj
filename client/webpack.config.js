@@ -31,8 +31,8 @@ module.exports = {
       },
       // Cargamos los estilos de CSS
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

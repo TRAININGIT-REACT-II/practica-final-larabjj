@@ -1,0 +1,59 @@
+/*
+--------------------------------------------------------------------------------
+Custom variables and overrides
+--------------------------------------------------------------------------------
+*/
+
+$spacer: 1.25rem; // 20px
+
+$spacers: (
+  px: 1px,
+  1: $spacer * 0.25,  // 5px
+  2: $spacer * 0.5,   // 10px
+  3: $spacer * 0.75,  // 15px
+  4: $spacer,         // 20px
+  5: $spacer * 1.25,  // 25px
+  6: $spacer * 1.5,   // 30px
+  8: $spacer * 2,     // 40px
+  10: $spacer * 2.5,  // 50px
+  12: $spacer * 3,    // 60px
+  16: $spacer * 4,    // 80px
+  20: $spacer * 5,    // 100px
+  24: $spacer * 6,    // 120px
+);
+
+/*
+--------------------------------------------------------------------------------
+Custom colors
+--------------------------------------------------------------------------------
+*/
+
+$color-dark: #101e26;
+$color-white: #fff;
+$color-black: #000;
+$color-primary: #077cbc;
+$color-grey: #eef0f2;
+$color-text: #4a4a4a;
+
+/*
+--------------------------------------------------------------------------------
+Custom font-sizes
+--------------------------------------------------------------------------------
+*/
+
+$font-size-xs: 0.75rem;     // = 12px
+$font-size-sm: 0.8125rem;   // = 13px
+$font-size-md: 0.875rem;    // = 14px
+$font-size-base: 1rem;      // = 16px
+$font-size-lg: 1.125rem;    // = 18px
+$font-size-xl: 1.5rem;      // = 24px
+$font-size-xxl: 2rem;       // = 32px
+
+$h1-font-size: 2.625rem;    // = 42px
+$h2-font-size: 1.5rem;      // = 24px
+$h3-font-size: 1.5rem;      // = 24px
+$h4-font-size: 1.125rem;    // = 18px
+$h5-font-size: 1rem;        // = 16px
+$h6-font-size: 0.875rem;    // = 14px
+
+
