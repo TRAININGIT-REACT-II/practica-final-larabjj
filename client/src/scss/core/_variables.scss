@@ -57,3 +57,9 @@ $h5-font-size: 1rem;        // = 16px
 $h6-font-size: 0.875rem;    // = 14px
 
 
+body {
+	margin: 0;
+	background: $color-grey;
+	padding: map-get($spacers, 5);
+	min-height: 100vh;
+}
