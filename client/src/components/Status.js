@@ -1,4 +1,5 @@
 import '../scss/components/_status.scss';
+import withLoader from './withLoader';
 
 // Mostramos si el servidor funciona o no.
 const Status = ({ status }) => {
@@ -8,4 +9,4 @@ const Status = ({ status }) => {
   return <span className={css}>{text}</span>;
 };
 
-export default Status;
+export default withLoader(Status);
