@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "./components/Loader";
 import Status from "./components/Status";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
@@ -36,7 +37,7 @@ const App = () => {
           <h1>Curso de React de TrainingIT</h1>
           <p>
             Estado del servidor:
-            {loading ? " Cargando..." : <Status status={status} />}
+            {loading ?  <Loader /> : <Status status={status} />}
           </p>
         </main>
       </Layout>
