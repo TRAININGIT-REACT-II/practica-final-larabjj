@@ -44,7 +44,7 @@ const App = () => {
             Estado del servidor:
             {loading ?  <Loader /> : <Status status={status} />}
           </p>
-          <button onClick={openModal}>Mostrar Modal</button>
+          <button className="btn btn-primary" onClick={openModal}>Mostrar Modal</button>
           <Modal show={showModal} onClose={closeModal}>
             <h3>Esto es un modal</h3>
             <p>Aqui puedes mostrar cualquier tipo de contenido.</p>
