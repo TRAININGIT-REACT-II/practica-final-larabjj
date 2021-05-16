@@ -2,9 +2,22 @@
 
 body {
 	margin: 0;
-	background: $color-grey;
+	background: $bg-light-mode;
 	padding: map-get($spacers, 5);
 	min-height: 100vh;
+}
+
+body.dark {
+  background: $bg-dark-mode;
+  h1,h2,h3,h4,h5,h6,p,span {
+    color: $color-white;
+  }
+  .modal {
+    background-color: $bg-dark-mode;
+  }
+  .modal-background {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .layout {
