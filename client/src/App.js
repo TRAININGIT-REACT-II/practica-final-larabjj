@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Loader from "./components/Loader";
+import Modal from "./components/Modal";
 import Status from "./components/Status";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
@@ -19,6 +20,11 @@ const App = () => {
   }, []);
 
 
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
   const [theme, setTheme] = useState(THEMES.light);
 
   useEffect(() => {
@@ -29,7 +35,6 @@ const App = () => {
     }
   }, [theme]);
 
-  // Mostramos la aplicación
   return (
     <Theme.Provider value={{ current: theme, update: setTheme }}>
       <Layout title="Homepage for our TrainingNotes App">
@@ -39,6 +44,11 @@ const App = () => {
             Estado del servidor:
             {loading ?  <Loader /> : <Status status={status} />}
           </p>
+          <button onClick={openModal}>Mostrar Modal</button>
+          <Modal show={showModal} onClose={closeModal}>
+            <h3>Esto es un modal</h3>
+            <p>Aqui puedes mostrar cualquier tipo de contenido.</p>
+          </Modal>
         </main>
       </Layout>
     </Theme.Provider>
