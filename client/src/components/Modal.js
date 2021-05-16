@@ -45,7 +45,7 @@ const Modal = ({ children, show, onClose }) => {
     return createPortal(
       <div role="dialog" aria-modal="true">
         <div className="modal-background" onClick={onClose}/>
-        <div className="modal">
+        <div className="modal modal-dialog modal-dialog-centered">
           <button 
             className="modal-close outline" 
             aria-label="Cerrar modal" 

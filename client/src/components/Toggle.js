@@ -25,7 +25,7 @@ const ThemeToggle = () => {
       <span className="theme-toggle_option" aria-label="Tema claro">☀️</span>
       <div className="theme-toggle_controls" aria-current={currentName}>
         <input id="theme-toggle" type="checkbox" onChange={onChange}/>
-        <span class="theme-toggle_slider" />
+        <span className="theme-toggle_slider" />
       </div>
       <span className="theme-toggle_option" aria-label="Tema oscuro">🌙</span>
   </label>
