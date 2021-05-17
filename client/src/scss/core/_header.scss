@@ -1,0 +1,12 @@
+@import '../core/variables';
+@import '../core/mixins';
+
+.header {
+  margin-bottom: map-get($spacers, 10);
+  &__branding {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: map-get($spacers, 4);
+  }
+}
