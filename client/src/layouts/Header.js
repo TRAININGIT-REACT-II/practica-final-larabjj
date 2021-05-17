@@ -5,24 +5,24 @@ import Home from '../views/Home';
 import About from '../views/About';
 
 
-const Header = ({ title = "TrainingNotes App - PLC" }) => {
+const Header = ({ title = "TrainingNotes" }) => {
   return (
     <>
       <Router>
-      
-        <header className="layout_header">
-          <h3>{title}</h3>
-          <div className="layout_opts">
-            <div className="layout_theme">
-              <ThemeToggle />
-            </div>
-            <nav className="layout_nav">
-              <NavLink className="btn btn-outline-primary" to="/" exact>Homepage</NavLink>
-              <NavLink className="btn btn-outline-primary" to="/about">About</NavLink>
-            </nav>
+
+        <header className="header data-theme">
+          <div className="header__branding d-flex">
+            <h3>{title}</h3>
+            <div className="header__toggle-theme"><ThemeToggle /></div>
           </div>
           
+          <nav className="header__nav">
+            <NavLink className="btn btn-outline-primary" to="/" exact>Homepage</NavLink>
+            <NavLink className="btn btn-outline-primary" to="/about">About</NavLink>
+          </nav>
+          
         </header>
+
 
         <Route path="/">
           <Home />
