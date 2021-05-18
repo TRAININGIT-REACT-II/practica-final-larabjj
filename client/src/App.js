@@ -6,6 +6,7 @@ import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
 import Layout from "./layouts";
 
+
 // Componente principal de la aplicación.
 const App = () => {
   const [status, setStatus] = useState(false);
@@ -37,19 +38,27 @@ const App = () => {
 
   return (
     <Theme.Provider value={{ current: theme, update: setTheme }}>
-      <Layout title="Homepage for our TrainingNotes App">
-        <main className="home">
-          <h1>Curso de React de TrainingIT</h1>
-          <p>
-            Estado del servidor:
-            {loading ?  <Loader /> : <Status status={status} />}
-          </p>
-          <button className="btn btn-primary" onClick={openModal}>Mostrar Modal</button>
-          <Modal show={showModal} onClose={closeModal}>
-            <h3>Esto es un modal</h3>
-            <p>Aqui puedes mostrar cualquier tipo de contenido.</p>
-          </Modal>
-        </main>
+      <Layout>
+
+          <div className="col-12 col-md-9 data-theme">
+            <p>
+              Status server:
+              {loading ? <Loader /> : <Status status={status} />}
+            </p>
+            <button className="btn btn-primary" onClick={openModal}>Show modal</button>
+            <Modal show={showModal} onClose={closeModal}>
+              <h3>Title for modal</h3>
+              <p>Content for modal.</p>
+            </Modal>
+            
+          </div>
+
+          <div className="col-12 col-md-3 data-theme">
+            
+          </div>
+
+
+
       </Layout>
     </Theme.Provider>
   );
