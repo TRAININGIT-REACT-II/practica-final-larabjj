@@ -2,7 +2,7 @@
 @import '../core/mixins';
 
 .header {
-  margin-bottom: map-get($spacers, 10);
+  margin-bottom: map-get($spacers, 4);
   &__branding {
     align-items: center;
     display: flex;
