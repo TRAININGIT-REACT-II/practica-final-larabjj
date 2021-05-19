@@ -7,6 +7,14 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-bottom: map-get($spacers, 4);
+  }
+}
+
+.header__nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  .btn {
+    margin-bottom: map-get($spacers, 3);
   }
 }
