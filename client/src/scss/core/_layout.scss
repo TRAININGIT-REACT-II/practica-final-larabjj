@@ -13,7 +13,7 @@ body {
 body.dark {
   background: $bg-dark-mode;
   h1,h2,h3,h4,h5,h6,p,span {
-    color: $color-white;
+    color: $color-dark;
   }
   .data-theme {
     background: $color-grey;
@@ -31,4 +31,25 @@ body.dark {
   border-radius: 0.5rem;
   padding: map-get($spacers, 4);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.main-container {
+  margin-right: map-get($spacers, 2);
+}
+
+.list-group-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.login-alert {
+  border: 1px solid red;
+  border-radius: green;
+  background-color: yellow;
+  padding: 1rem;
 }
