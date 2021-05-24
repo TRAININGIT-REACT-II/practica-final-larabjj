@@ -46,17 +46,17 @@ const App = () => {
   }, [theme]);
 
 
-  const { isLogged, logout } = useUser();
+  const { isLogged, logout } = useUser(false);
 
   const handleClick = e => {
     e.preventDefault()
     logout()
   }
-  
+
   console.log(isLogged);
 
   return (
-    <UserContextProvider value={{updateUser: isLogged }}>
+    <UserContextProvider>
       <Theme.Provider value={{ current: theme, update: setTheme }}>
         <Router>
           <Layout>
