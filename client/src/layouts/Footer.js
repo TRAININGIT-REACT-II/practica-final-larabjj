@@ -11,8 +11,6 @@ const Footer = () => {
             {/* <img src={ profileImage } className="" /> */}
           </div>
           <a className="px-2" target="_blank" href="https://twitter.com/PabloLC_"><p className="">pablolc</p></a>
-
-        
       </footer>
     </>
   )
