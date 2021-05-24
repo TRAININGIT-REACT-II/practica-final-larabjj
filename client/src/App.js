@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch, Link } from "react-router-dom";
-import Loader from "./components/Loader";
-import Status from "./components/Status";
-import { TodoApp } from "./components/TodoApp";
+
 import { THEMES } from "./constants/themes";
-import Theme from "./contexts/theme";
 import Layout from "./layouts";
-import About from "./views/About";
-import Home from "./views/Home";
-
-
-
-import RegisterPage from "./views/Register";
-
-import Login from "./views/Login";
 
 import { UserContextProvider } from "./contexts/UserContext";
+import Theme from "./contexts/theme";
+
+import Status from "./components/Status";
+import Loader from "./components/Loader";
+import PrivateRoute from "./components/PrivateRoute";
+import { TodoApp } from "./components/TodoApp";
+
+import About from "./views/About";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import RegisterPage from "./views/Register";
+// import NotFound from "./views/NotFound";
+
 import useUser from "./hooks/useUser";
 
-import PrivateRoute from "./components/PrivateRoute";
-// import NotFound from "./views/NotFound";
 
 
 // Componente principal de la aplicación.
@@ -45,18 +45,16 @@ const App = () => {
     }
   }, [theme]);
 
-
-  const { isLogged, logout } = useUser(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   const handleClick = e => {
     e.preventDefault()
     logout()
   }
 
-  console.log(isLogged);
 
   return (
-    <UserContextProvider>
+    <UserContextProvider value={{ isLogged, updateUser: setIsLogged }}>
       <Theme.Provider value={{ current: theme, update: setTheme }}>
         <Router>
           <Layout>
@@ -80,7 +78,6 @@ const App = () => {
                 <About temp='Holiiiiii' />
               </Route>
 
-
             </div>
 
 
@@ -90,11 +87,7 @@ const App = () => {
                 <NavLink className="btn btn-outline-primary" activeClassName="active" to="/">
                   Inicio
                   </NavLink>
-                {/* {!isLogged && (
-                  <NavLink className="btn btn-outline-primary" activeClassName="active" to="/login">
-                    Iniciar sesión
-                  </NavLink>
-                )} */}
+
                 {isLogged && (
                   <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
                     App

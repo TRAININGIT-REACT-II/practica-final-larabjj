@@ -1,9 +1,9 @@
 import React, { useCallback, useContext } from 'react';
-import Context from '../contexts/UserContext';
+import User from '../contexts/UserContext';
 import loginService from '../services/login';
 
 export default function useUser () {
-  const {token, setToken} = useContext(Context);
+  const {token, setToken} = useContext(User);
 
   const login = useCallback(({ username, password }) => {
     loginService({username, password})
