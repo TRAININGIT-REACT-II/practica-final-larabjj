@@ -34,7 +34,7 @@ body.dark {
 }
 
 .main-container {
-  margin-right: map-get($spacers, 2);
+  margin-right: map-get($spacers, 4);
 }
 
 .list-group-item {
@@ -47,9 +47,3 @@ body.dark {
   text-decoration: line-through;
 }
 
-.login-alert {
-  border: 1px solid red;
-  border-radius: green;
-  background-color: yellow;
-  padding: 1rem;
-}

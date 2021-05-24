@@ -1,22 +1,16 @@
-import ThemeToggle from '../components/Toggle';
 import '../scss/core/_layout.scss';
 import Footer from './Footer';
-import Header from './header';
-import MainContainer from './MainContainer';
+import Header from './Header';
 
-/**
- * Engloba el contenido principal en un contendor para 
- * centrar el layout
- */
+
 const Layout = ({ children }) => (
   <div className="container">
 
     <Header />
 
-    <main className="d-flex">
+    <main className="d-flex justify-content-center">
       {children}
     </main>
-  
 
     <Footer />
 
