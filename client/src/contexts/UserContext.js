@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 
 
-const Context = React.createContext({});
+const User = React.createContext({});
 
 export function UserContextProvider ({children}) {
   const [token, setToken] = useState(
     () => window.sessionStorage.getItem('token')
   );
 
-  return <Context.Provider value={{ token, setToken }}>
+  return <User.Provider value={{ token, setToken }}>
     {children}
-  </Context.Provider>
+  </User.Provider>
 }
 
-export default Context
+export default User

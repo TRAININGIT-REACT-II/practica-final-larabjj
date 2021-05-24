@@ -24,7 +24,7 @@ const Header = ({ title = "TrainingNotes" }) => {
 
         {
           isLogged
-            ? <Link to='#' onClick={handleClick}>
+            ? <Link to='/' onClick={handleClick}>
               Logout
           </Link>
             : <>
