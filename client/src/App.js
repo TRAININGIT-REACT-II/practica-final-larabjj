@@ -47,12 +47,6 @@ const App = () => {
 
   const [isLogged, setIsLogged] = useState(false);
 
-  const handleClick = e => {
-    e.preventDefault()
-    logout()
-  }
-
-
   return (
     <UserContextProvider value={{ isLogged, updateUser: setIsLogged }}>
       <Theme.Provider value={{ current: theme, update: setTheme }}>
