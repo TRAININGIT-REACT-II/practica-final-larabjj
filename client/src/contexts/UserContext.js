@@ -13,4 +13,4 @@ export function UserContext ({children}) {
   </User.Provider>
 }
 
-export default User
+export default User;
