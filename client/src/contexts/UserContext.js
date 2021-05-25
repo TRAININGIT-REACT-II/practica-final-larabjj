@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, createContext } from 'react'
 
 
-const User = React.createContext({});
+const User = createContext({});
 
-export function UserContextProvider ({children}) {
+export function UserContext ({children}) {
   const [token, setToken] = useState(
     () => window.sessionStorage.getItem('token')
   );

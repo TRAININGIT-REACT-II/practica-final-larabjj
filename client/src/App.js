@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, NavLink, Switch, Link } from "react-rou
 import { THEMES } from "./constants/themes";
 import Layout from "./layouts";
 
-import { UserContextProvider } from "./contexts/UserContext";
+// import { User } from "./contexts/UserContext";
+import { UserContext } from "./contexts/UserContext";
 import Theme from "./contexts/theme";
 
 import Status from "./components/Status";
@@ -45,10 +46,11 @@ const App = () => {
     }
   }, [theme]);
 
+  // const { isLogged } = useUser(User);
   const [isLogged, setIsLogged] = useState(false);
 
   return (
-    <UserContextProvider value={{ isLogged, updateUser: setIsLogged }}>
+    <UserContext>
       <Theme.Provider value={{ current: theme, update: setTheme }}>
         <Router>
           <Layout>
@@ -124,7 +126,7 @@ const App = () => {
           </Layout>
         </Router>
       </Theme.Provider>
-    </UserContextProvider>
+    </UserContext>
   );
 };
 
