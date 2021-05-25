@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, NavLink, Switch, Link } from "react-rou
 import { THEMES } from "./constants/themes";
 import Layout from "./layouts";
 
-// import { User } from "./contexts/UserContext";
 import { UserContext } from "./contexts/UserContext";
 import Theme from "./contexts/theme";
 
@@ -28,6 +27,11 @@ const App = () => {
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const [theme, setTheme] = useState(THEMES.light);
+
+  const { isLogged } = useUser();
+
+
   // Cargamos el estado del servidor
   useEffect(() => {
     fetch("/api")
@@ -36,9 +40,8 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const [theme, setTheme] = useState(THEMES.light);
-
   useEffect(() => {
+    // console.log(isLogged);
     if (document.body.classList.value === '') {
       document.body.classList.add(theme);
     } else {
@@ -46,8 +49,6 @@ const App = () => {
     }
   }, [theme]);
 
-  // const { isLogged } = useUser(User);
-  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <UserContext>
@@ -94,10 +95,10 @@ const App = () => {
                     About
                   </NavLink>
                 )}
-                
+
                 {
                   isLogged
-                    ? <NavLink className="btn btn-outline-primary" to='#' onClick={handleClick}>
+                    ? <NavLink className="btn btn-outline-primary" to='#'>
                       Logout
                   </NavLink>
                     : <>
