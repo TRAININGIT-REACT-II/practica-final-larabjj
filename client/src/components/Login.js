@@ -11,7 +11,11 @@ export default function Login({ onLogin }) {
 
   useEffect(() => {
     if (isLogged) {
-      <Redirect strict from="/login" to="/" /> //He probado varias formas ya.... y nada
+      <Redirect
+        to={{
+          pathname: "/"
+        }}
+      />
     }
   }, [isLogged, logout])
 

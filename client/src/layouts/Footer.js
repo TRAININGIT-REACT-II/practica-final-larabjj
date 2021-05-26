@@ -5,12 +5,12 @@ import React from 'react';
 const Footer = () => {
   return (
     <>
-      <footer className="data-theme">
-          <p className="font-weight-light">Made with ❤️ by</p>
+      <footer className="footer data-theme">
+          <p className="footer__made">Made with ❤️ by</p>
           <div className="d-flex align-items-center px-2">
             {/* <img src={ profileImage } className="" /> */}
           </div>
-          <a className="px-2" target="_blank" href="https://twitter.com/PabloLC_"><p className="">pablolc</p></a>
+          <a className="footer__link px-2" target="_blank" href="https://twitter.com/PabloLC_">pablolc</a>
       </footer>
     </>
   )
