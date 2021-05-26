@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch, Link } from "react-router-dom";
 
 import { THEMES } from "./constants/themes";
 import Layout from "./layouts";
 
-import { UserContext } from "./contexts/UserContext";
 import Theme from "./contexts/theme";
 
 import Status from "./components/Status";
@@ -29,8 +28,13 @@ const App = () => {
 
   const [theme, setTheme] = useState(THEMES.light);
 
-  const { isLogged } = useUser();
 
+  const { isLogged, logout } = useUser();
+
+  const handleClick = e => {
+    e.preventDefault()
+    logout()
+  }
 
   // Cargamos el estado del servidor
   useEffect(() => {
@@ -41,7 +45,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // console.log(isLogged);
+
     if (document.body.classList.value === '') {
       document.body.classList.add(theme);
     } else {
@@ -51,83 +55,81 @@ const App = () => {
 
 
   return (
-    <UserContext>
-      <Theme.Provider value={{ current: theme, update: setTheme }}>
-        <Router>
-          <Layout>
-            {/* <Switch> */}
-            <div className="main-container col-12 col-md-8 data-theme">
-              <Route path="/" exact>
-                <Home />
-              </Route>
+    <Theme.Provider value={{ current: theme, update: setTheme }}>
+      <Router>
+        <Layout>
+          {/* <Switch> */}
+          <div className="main-container col-12 col-md-8 data-theme">
+            <Route path="/" exact>
+              <Home />
+            </Route>
 
-              <PrivateRoute path="/app">
-                <TodoApp />
-              </PrivateRoute>
-
-
-              <Route component={Login} path="/login" />
-              <Route component={RegisterPage} path="/register" />
-
-              <Route path="/about" exact>
-                {/* <About temp='Pablo' /> */}
-                {/* <About temp={<TodoApp />} /> */}
-                <About temp='Holiiiiii' />
-              </Route>
-
-            </div>
+            <PrivateRoute path="/app">
+              <TodoApp />
+            </PrivateRoute>
 
 
-            <div className="sidebar-container col-12 col-md-3 data-theme">
+            <Route component={Login} path="/login" />
+            <Route component={RegisterPage} path="/register" />
 
-              <nav className="header__nav">
-                <NavLink className="btn btn-outline-primary" activeClassName="active" to="/">
-                  Inicio
+            <Route path="/about" exact>
+              {/* <About temp='Pablo' /> */}
+              {/* <About temp={<TodoApp />} /> */}
+              <About temp='Holiiiiii' />
+            </Route>
+
+          </div>
+
+
+          <div className="sidebar-container col-12 col-md-3 data-theme">
+
+            <nav className="sidebar-container__nav">
+              <NavLink className="btn btn-outline-primary" activeClassName="active" to="/">
+                Inicio
                   </NavLink>
 
-                {isLogged && (
-                  <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
-                    App
-                  </NavLink>
-                )}
-                {isLogged && (
-                  <NavLink className="btn btn-outline-primary" activeClassName="active" to="/about">
-                    About
-                  </NavLink>
-                )}
+              {isLogged && (
+                <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
+                  App
+                </NavLink>
+              )}
+              {isLogged && (
+                <NavLink className="btn btn-outline-primary" activeClassName="active" to="/about">
+                  About
+                </NavLink>
+              )}
 
-                {
-                  isLogged
-                    ? <NavLink className="btn btn-outline-primary" to='#'>
-                      Logout
+              {
+                isLogged
+                  ? <NavLink className="btn btn-outline-primary" to='/' onClick={handleClick}>
+                    Logout
                   </NavLink>
-                    : <>
-                      <NavLink className="btn btn-outline-primary" to='/login'>
-                        Login
+                  : <>
+                    <NavLink className="btn btn-outline-primary" to='/login'>
+                      Login
                       </NavLink>
 
-                      <NavLink className="btn btn-outline-primary" to='/register'>
-                        Register
+                    <NavLink className="btn btn-outline-primary" to='/register'>
+                      Register
                       </NavLink>
-                    </>
-                }
+                  </>
+              }
 
-              </nav>
-              <div className="d-flex justify-content-center">
-                <p>
-                  Status server:
+            </nav>
+            <div className="d-flex justify-content-center">
+              <p>
+                Status server:
                     {loading ? <Loader /> : <Status status={status} />}
-                </p>
-              </div>
+              </p>
             </div>
-            {/* <Route path="*">
+          </div>
+          {/* <Route path="*">
                 <NotFound />
               </Route> */}
-            {/* </Switch> */}
-          </Layout>
-        </Router>
-      </Theme.Provider>
-    </UserContext>
+          {/* </Switch> */}
+        </Layout>
+      </Router>
+    </Theme.Provider>
   );
 };
 
