@@ -37,6 +37,17 @@ body.dark {
   margin-right: map-get($spacers, 4);
 }
 
+.sidebar-container {
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .btn {
+      margin-bottom: map-get($spacers, 3);
+    }
+  }
+}
+
 .list-group-item {
   align-items: center;
   display: flex;
