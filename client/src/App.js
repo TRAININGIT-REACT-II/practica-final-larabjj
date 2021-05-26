@@ -107,17 +107,17 @@ const App = () => {
                   : <>
                     <NavLink className="btn btn-outline-primary" to='/login'>
                       Login
-                      </NavLink>
+                    </NavLink>
 
                     <NavLink className="btn btn-outline-primary" to='/register'>
                       Register
-                      </NavLink>
+                    </NavLink>
                   </>
               }
 
             </nav>
             <div className="d-flex justify-content-center">
-              <p>
+              <p className="font-lovely">
                 Status server:
                     {loading ? <Loader /> : <Status status={status} />}
               </p>

@@ -11,7 +11,7 @@ const Header = ({ title = "TrainingNotes" }) => {
 
       <header className="header data-theme">
         <div className="header__branding d-flex">
-          <h3>{title}</h3>
+          <h2>{title}</h2>
           <div className="header__toggle-theme"><ThemeToggle /></div>
         </div>
       </header>
