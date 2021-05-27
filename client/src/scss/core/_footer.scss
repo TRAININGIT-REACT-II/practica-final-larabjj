@@ -5,9 +5,14 @@
   align-items: center;
   justify-content: center;
   margin-top: map-get($spacers, 4);
-  &__link,
-  &__made {
-    font-family: 'Gochi Hand', cursive;
+  color: initial;
+  &__link {
+    color: initial;
+    text-decoration-line: none;
+  }
+  &__image {
+    border-radius: 50%;
+    height: 2rem;
   }
   p {
     margin-bottom: 0;
