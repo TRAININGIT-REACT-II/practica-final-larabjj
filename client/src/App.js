@@ -10,6 +10,7 @@ import Status from "./components/Status";
 import Loader from "./components/Loader";
 import PrivateRoute from "./components/PrivateRoute";
 import { TodoApp } from "./components/TodoApp";
+import Modal from "./components/Modal";
 
 import About from "./views/About";
 import Home from "./views/Home";
@@ -18,6 +19,10 @@ import RegisterPage from "./views/Register";
 // import NotFound from "./views/NotFound";
 
 import useUser from "./hooks/useUser";
+import { TodoAdd } from "./components/TodoAdd";
+import { TodoList } from "./components/TodoList";
+import useApi from "./hooks/useApi";
+// import User from "./contexts/UserContext";
 
 
 
@@ -25,6 +30,12 @@ import useUser from "./hooks/useUser";
 const App = () => {
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
 
   const [theme, setTheme] = useState(THEMES.light);
 
@@ -54,13 +65,61 @@ const App = () => {
   }, [theme]);
 
 
+  // Definimos la llamada para login
+  const loginRequest = useApi("/api/login", "", {}, false);
+
+  let token;
+  if (loginRequest.data) {
+    token = loginRequest.data.token;
+  }
+
+  // Hacemos lo mismo para los todos.
+  const request = useApi("/api/notes", token);
+
+  // Función para iniciar sesión en la aplicación
+  const login = () => {
+    loginRequest.updateParams({
+      method: "POST",
+      body: JSON.stringify({
+        // En un caso real, estos datos vienen de
+        // un formulario.
+        username: "aaa",
+        password: "aaa",
+      }),
+    });
+    loginRequest.perform();
+  };
+
+  console.log(token);
+
   return (
     <Theme.Provider value={{ current: theme, update: setTheme }}>
       <Router>
         <Layout>
           {/* <Switch> */}
           <div className="main-container col-12 col-md-8 data-theme">
-            <Route path="/" exact>
+
+            {!token && <button onClick={login}>Iniciar sesión</button>}
+            {request.error && (
+              <p>
+                Hubo un error: <b>{request.error}</b>
+              </p>
+            )}
+            {request.data && request.data.length > 0 ? (
+              <TodoList todos={request.data} />
+            ) : (
+              <Loader />
+            )}
+
+            {/* <TodoAdd
+              submitTodo={submitTodo}
+            /> */}
+
+            <Modal show={showModal} onClose={closeModal}>
+              <Route component={Login} />
+            </Modal>
+
+            <Route exact path="/" >
               <Home />
             </Route>
 
@@ -69,7 +128,7 @@ const App = () => {
             </PrivateRoute>
 
 
-            <Route component={Login} path="/login" />
+            {/* <Route component={Login} path="/login" /> */}
             <Route component={RegisterPage} path="/register" />
 
             <Route path="/about" exact>
@@ -85,8 +144,8 @@ const App = () => {
 
             <nav className="sidebar-container__nav">
               <NavLink className="btn btn-outline-primary" activeClassName="active" to="/">
-                Inicio
-                  </NavLink>
+                Home
+              </NavLink>
 
               {isLogged && (
                 <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
@@ -105,7 +164,7 @@ const App = () => {
                     Logout
                   </NavLink>
                   : <>
-                    <NavLink className="btn btn-outline-primary" to='/login'>
+                    <NavLink className="btn btn-outline-primary" onClick={openModal} to='/login'>
                       Login
                     </NavLink>
 
@@ -119,7 +178,7 @@ const App = () => {
             <div className="d-flex justify-content-center">
               <p className="font-lovely">
                 Status server:
-                    {loading ? <Loader /> : <Status status={status} />}
+                  {loading ? <Loader /> : <Status status={status} />}
               </p>
             </div>
           </div>
