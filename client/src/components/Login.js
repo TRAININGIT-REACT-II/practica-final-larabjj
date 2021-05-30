@@ -7,7 +7,7 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, isLogged, logout } = useUser();
+  const { login, isLogged, logout, isLoginLoading, hasLoginError } = useUser();
 
   useEffect(() => {
     if (isLogged) {
@@ -26,26 +26,31 @@ export default function Login({ onLogin }) {
 
   return (
     <>
-      <form className='form' onSubmit={handleSubmit}>
-        <label>
-          <input
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </label>
-
-        <label>
+      {isLoginLoading && <strong>Checking credentials...</strong>}
+      {!isLoginLoading &&
+        <form className='form' onSubmit={handleSubmit}>
+          <label>
             <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </label>
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </label>
 
-        <button className='btn'>Login</button>
-      </form>
-    </>
+          <label>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </label>
+
+          <button className='btn'>Login</button>
+        </form>
+      }
+      {
+        hasLoginError && <strong>Credentials are invalid</strong>
+      }    </>
   );
 }
