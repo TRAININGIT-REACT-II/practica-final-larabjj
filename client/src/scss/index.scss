@@ -4,7 +4,6 @@
 @import 'core/layout';
 @import 'core/header';
 @import 'core/footer';
-@import 'core/mixins';
 
 // Views
 @import 'views/home';
@@ -13,4 +12,5 @@
 @import 'components/toggle';
 @import 'components/status';
 @import 'components/login';
+@import 'components/todoapp';
 

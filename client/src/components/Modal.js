@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import { useEffect, useRef } from "react";
 
 import '../scss/components/_modal.scss';
+import useUser from "../hooks/useUser";
 
 /**
  * Muestra el contenido como un modal. Este componente hace uso de portales
@@ -40,15 +41,17 @@ const Modal = ({ children, show, onClose }) => {
     }
   }, [show])
 
+  const { isLogged, logout } = useUser();
+
   // Renderizamos el componente
-  if (show && modalRef.current != null) {
+  if (show && isLogged === false && modalRef.current != null) {
     return createPortal(
       <div role="dialog" aria-modal="true">
         <div className="modal-background" onClick={onClose}/>
-        <div className="modal modal-dialog modal-dialog-centered">
+        <div className="modal data-theme modal-dialog modal-dialog-centered d-flex flex-column">
           <button 
             className="modal-close outline" 
-            aria-label="Cerrar modal" 
+            aria-label="Close modal" 
             onClick={onClose}
           >
             &times;

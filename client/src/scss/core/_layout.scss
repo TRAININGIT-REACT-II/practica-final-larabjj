@@ -25,6 +25,9 @@ body.dark {
   .modal-background {
     background: rgba(255, 255, 255, 0.3);
   }
+  .list-group-item {
+    background-color: transparent;
+  }
 }
 
 .data-theme {
@@ -39,6 +42,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .main-container {
   margin-right: map-get($spacers, 4);
+  min-height: calc(100vh - 240px);
 }
 
 .sidebar-container {
@@ -56,14 +60,3 @@ h1,h2,h3,h4,h5,h6 {
 .font-lovely {
   font-family: 'Gochi Hand', cursive;
 }
-
-.list-group-item {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.complete {
-  text-decoration: line-through;
-}
-

@@ -50,7 +50,8 @@ export default function Login({ onLogin }) {
         </form>
       }
       {
-        hasLoginError && <strong>Credentials are invalid</strong>
-      }    </>
+        hasLoginError && <strong>Credentials are invalid 😕, try it again my dear 🤗</strong>
+      }
+    </>
   );
 }

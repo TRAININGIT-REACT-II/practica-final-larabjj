@@ -21,6 +21,13 @@
 
 .modal.modal-dialog {
   pointer-events: auto;
+  position: absolute;
+  height: 250px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .modal-background {
@@ -30,7 +37,14 @@
   top: 0;
   position: absolute;
   width: 100vw;
-  z-index: 9;
+  z-index: 2;
+  .modal-custom {
+    max-height: 250px;
+    min-height: unset;
+    position: absolute;
+    margin: auto;
+    z-index: 99;
+  }
 }
 
 .modal-close {
