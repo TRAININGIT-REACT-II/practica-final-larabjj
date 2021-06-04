@@ -19,18 +19,18 @@ export default function Register() {
 
   if (registered) {
     return <h4>
-      Congratulations ✅! You've been successfully registered!
+      Congratulations ✅! You've been successfully registered!!
     </h4>
   }
 
   return (
     <>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
+      <form className='form mx-auto' onSubmit={handleSubmit(onSubmit)}>
         <input
           className={errors.username ? 'error' : ''}
           name="username"
           placeholder="Put here the username"
-          ref={register({ required: 'This is required' })}
+          ref={register({ required: 'This field is required' })}
         />
         <ErrorMessage errors={errors} name='username' as="small"/>
 

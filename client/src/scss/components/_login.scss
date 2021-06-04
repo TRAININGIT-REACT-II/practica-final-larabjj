@@ -1,38 +1,42 @@
+@import '../core/variables';
+
 .form {
   max-width: 320px;
   width: 100%;
   button {
-    border: 2px solid green;
+    border: 2px solid $bg-dark-mode;
     margin-bottom: 2rem;
   }
 }
 
 .form label {
   display: block;
-  font-size: 14px;
+  font-size: $font-size-md;
 }
 
 .form-error, .form small {
-  color: red;
+  color: $color-red-error;
   font-size: 12px;
   margin-top: -12px;
   display: block;
 }
 
 .form input {
-  background: #fff;
-  border: 2px solid red;
+  background: transparent;
+  border: 2px solid $color-grey;
+  border-radius: map-get($spacers, 1);
   display: block;
   line-height: 2;
-  font-size: 16px;
+  font-size: $font-size-base;
   width: 100%;
-  padding: 0 8px;
-  margin-bottom: 16px;
-  margin-top: 4px;
+  padding: 0 map-get($spacers, 2);
+  margin-bottom: map-get($spacers, 3);
+  z-index: 999;
+  pointer-events: none;
 }
 
 .form input.error {
-  border: 1px solid red;
+  border: 1px solid $color-red-error;
 }
 
 .form .btn {

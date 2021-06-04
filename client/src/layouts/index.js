@@ -8,7 +8,7 @@ const Layout = ({ children }) => (
 
     <Header />
 
-    <main className="d-flex justify-content-center">
+    <main className="d-flex flex-column flex-md-row-reverse justify-content-center">
       {children}
     </main>
 

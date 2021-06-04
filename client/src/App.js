@@ -21,7 +21,6 @@ import RegisterPage from "./views/Register";
 import useUser from "./hooks/useUser";
 import { TodoAdd } from "./components/TodoAdd";
 import { TodoList } from "./components/TodoList";
-import useApi from "./hooks/useApi";
 // import User from "./contexts/UserContext";
 
 
@@ -65,128 +64,83 @@ const App = () => {
   }, [theme]);
 
 
-  // Definimos la llamada para login
-  const loginRequest = useApi("/api/login", "", {}, false);
-
-  let token;
-  if (loginRequest.data) {
-    token = loginRequest.data.token;
-  }
-
-  // Hacemos lo mismo para los todos.
-  const request = useApi("/api/notes", token);
-
-  // Función para iniciar sesión en la aplicación
-  const login = () => {
-    loginRequest.updateParams({
-      method: "POST",
-      body: JSON.stringify({
-        // En un caso real, estos datos vienen de
-        // un formulario.
-        username: "aaa",
-        password: "aaa",
-      }),
-    });
-    loginRequest.perform();
-  };
-
-  console.log(token);
-
   return (
     <Theme.Provider value={{ current: theme, update: setTheme }}>
       <Router>
-        <Layout>
-          {/* <Switch> */}
-          <div className="main-container col-12 col-md-8 data-theme">
+        <Switch>
+          <Layout>
 
-            {!token && <button onClick={login}>Iniciar sesión</button>}
-            {request.error && (
-              <p>
-                Hubo un error: <b>{request.error}</b>
-              </p>
-            )}
-            {request.data && request.data.length > 0 ? (
-              <TodoList todos={request.data} />
-            ) : (
-              <Loader />
-            )}
-
-            {/* <TodoAdd
-              submitTodo={submitTodo}
-            /> */}
-
-            <Modal show={showModal} onClose={closeModal}>
-              <Route component={Login} />
-            </Modal>
-
-            <Route exact path="/" >
-              <Home />
-            </Route>
-
-            <PrivateRoute path="/app">
-              <TodoApp />
-            </PrivateRoute>
-
-
-            {/* <Route component={Login} path="/login" /> */}
-            <Route component={RegisterPage} path="/register" />
-
-            <Route path="/about" exact>
-              {/* <About temp='Pablo' /> */}
-              {/* <About temp={<TodoApp />} /> */}
-              <About temp='Holiiiiii' />
-            </Route>
-
-          </div>
-
-
-          <div className="sidebar-container col-12 col-md-3 data-theme">
-
-            <nav className="sidebar-container__nav">
-              <NavLink className="btn btn-outline-primary" activeClassName="active" to="/">
-                Home
+            <div className="sidebar-container col-12 col-md-3 mb-4 mb-md-0 data-theme">
+              <nav className="sidebar-container__nav">
+                <NavLink className="btn btn-outline-primary" to="/">
+                  Home
               </NavLink>
 
-              {isLogged && (
-                <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
-                  App
-                </NavLink>
-              )}
-              {isLogged && (
-                <NavLink className="btn btn-outline-primary" activeClassName="active" to="/about">
-                  About
-                </NavLink>
-              )}
-
-              {
-                isLogged
-                  ? <NavLink className="btn btn-outline-primary" to='/' onClick={handleClick}>
-                    Logout
+                {isLogged && (
+                  <NavLink className="btn btn-outline-primary" activeClassName="active" to="/app">
+                    App
                   </NavLink>
-                  : <>
-                    <NavLink className="btn btn-outline-primary" onClick={openModal} to='/login'>
-                      Login
+                )}
+                {isLogged && (
+                  <NavLink className="btn btn-outline-primary" activeClassName="active" to="/about">
+                    About
+                  </NavLink>
+                )}
+
+                {
+                  isLogged
+                    ? <NavLink className="btn btn-outline-primary" activeClassName="active" to='/' onClick={handleClick}>
+                      Logout
+                  </NavLink>
+                    : <>
+                      <NavLink className="btn btn-outline-primary" onClick={openModal} to='/login'>
+                        Login
                     </NavLink>
 
-                    <NavLink className="btn btn-outline-primary" to='/register'>
-                      Register
+                      <NavLink className="btn btn-outline-primary" to='/register'>
+                        Register
                     </NavLink>
-                  </>
-              }
-
-            </nav>
-            <div className="d-flex justify-content-center">
-              <p className="font-lovely">
-                Status server:
+                    </>
+                }
+              </nav>
+              <div className="d-flex justify-content-center">
+                <p className="font-lovely">
+                  Status server:
                   {loading ? <Loader /> : <Status status={status} />}
-              </p>
+                </p>
+              </div>
             </div>
-          </div>
-          {/* <Route path="*">
-                <NotFound />
-              </Route> */}
-          {/* </Switch> */}
-        </Layout>
+
+            <div className="main-container col-12 col-md-8 data-theme">
+
+              <Modal show={showModal} onClose={closeModal}>
+                <Route component={Login} path="/login" />
+              </Modal>
+
+              <Route exact path="/" >
+                <Home />
+              </Route>
+
+              <PrivateRoute path="/app">
+                <TodoApp />
+              </PrivateRoute>
+
+
+              <Route component={RegisterPage} path="/register" />
+
+              <Route path="/about" exact>
+                <About temp='Holiiiiii' />
+              </Route>
+
+            </div>
+
+            {/* <Route path="*">
+              <NotFound />
+            </Route> */}
+
+
+          </Layout>
+        </Switch>
       </Router>
     </Theme.Provider>
   );
