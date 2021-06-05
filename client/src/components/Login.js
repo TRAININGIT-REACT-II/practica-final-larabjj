@@ -7,17 +7,8 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, isLogged, logout, isLoginLoading, hasLoginError } = useUser();
+  const { login, isLoginLoading, hasLoginError } = useUser();
 
-  useEffect(() => {
-    if (isLogged) {
-      <Redirect
-        to={{
-          pathname: "/"
-        }}
-      />
-    }
-  }, [isLogged, logout])
 
   const handleSubmit = (e) => {
     e.preventDefault();

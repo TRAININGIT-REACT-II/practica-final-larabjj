@@ -93,7 +93,7 @@ const App = () => {
                       Logout
                   </NavLink>
                     : <>
-                      <NavLink className="btn btn-outline-primary" onClick={openModal} to='/login'>
+                      <NavLink className="btn btn-outline-primary" onClick={openModal} to='/'>
                         Login
                     </NavLink>
 
@@ -114,7 +114,7 @@ const App = () => {
             <div className="main-container col-12 col-md-8 data-theme">
 
               <Modal show={showModal} onClose={closeModal}>
-                <Route component={Login} path="/login" />
+                <Route component={Login} path="/" />
               </Modal>
 
               <Route exact path="/" >
