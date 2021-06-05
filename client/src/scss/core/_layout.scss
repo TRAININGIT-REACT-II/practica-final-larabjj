@@ -20,7 +20,7 @@ body.dark {
     box-shadow: rgba(194, 191, 191, 0.1) 0px 4px 12px;
   }
   .modal {
-    background-color: $bg-dark-mode;
+    background-color: $bg-light-mode;
   }
   .modal-background {
     background: rgba(255, 255, 255, 0.3);
@@ -43,6 +43,8 @@ h1,h2,h3,h4,h5,h6 {
 .main-container {
   margin-right: map-get($spacers, 4);
   min-height: calc(100vh - 240px);
+  max-height: calc(100vh - 240px);
+  overflow-y: scroll;
 }
 
 .sidebar-container {

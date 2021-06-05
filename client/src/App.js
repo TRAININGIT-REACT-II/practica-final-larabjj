@@ -128,9 +128,9 @@ const App = () => {
 
               <Route component={RegisterPage} path="/register" />
 
-              <Route path="/about" exact>
-                <About temp='Holiiiiii' />
-              </Route>
+              <PrivateRoute path="/about">
+                <About />
+              </PrivateRoute>
 
             </div>
 

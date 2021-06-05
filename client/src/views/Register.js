@@ -5,6 +5,7 @@ const RegisterPage = () => {
   return (
     <>
       <h2>Register</h2>
+      <hr />
       <Register />
     </>
   )
