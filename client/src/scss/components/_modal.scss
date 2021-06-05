@@ -1,17 +1,19 @@
 @import '../core/variables';
 
+.modal-path {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
 .modal {
   background-color: $color-white;
   border-radius: 10px;
   border: 2px solid $color-primary;
   box-shadow: 2px 2px 15px -3px rgba(0, 0, 0, 0.3);
-  left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
-  margin: auto;
   max-width: 600px;
-  position: absolute;
   text-align: center;
   padding: 2rem;
   width: 100%;
@@ -22,12 +24,12 @@
 .modal.modal-dialog {
   pointer-events: auto;
   position: absolute;
-  height: 250px;
-  margin: auto;
-  top: 0;
+  top: 50%;
   left: 0;
-  bottom: 0;
   right: 0;
+  transform: translateY(-50%);
+  min-height: unset;
+  height: 250px;
 }
 
 .modal-background {
@@ -38,28 +40,20 @@
   position: absolute;
   width: 100vw;
   z-index: 2;
-  .modal-custom {
-    max-height: 250px;
-    min-height: unset;
-    position: absolute;
-    margin: auto;
-    z-index: 99;
-  }
 }
 
 .modal-close {
   border: 0;
   font-size: 1em;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: map-get($spacers, 3);
+  top: map-get($spacers, 3);
 }
 
 .modal-close:active {
-  top: 16px;
+  top: map-get($spacers, 3);
 }
 
 .modal-hidden {
   display: none;
 }
-

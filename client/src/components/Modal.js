@@ -41,12 +41,12 @@ const Modal = ({ children, show, onClose }) => {
     }
   }, [show])
 
-  const { isLogged, logout } = useUser();
+  const { isLogged } = useUser();
 
   // Renderizamos el componente
   if (show && isLogged === false && modalRef.current != null) {
     return createPortal(
-      <div role="dialog" aria-modal="true">
+      <div className="modal-path" role="dialog" aria-modal="true">
         <div className="modal-background" onClick={onClose}/>
         <div className="modal data-theme modal-dialog modal-dialog-centered d-flex flex-column">
           <button 
