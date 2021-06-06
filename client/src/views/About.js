@@ -40,7 +40,7 @@ const About = () => {
         <h3>Lo que lamento en el alma:</h3>
         <ul>
           <li>
-            <p>Como comprobarás la aplicación de notas y la membresia persisten por sí mismas pero no conjuntas. Escribo aquí lo que habrás visto o verás en el código, tal como se espera de la práctica final, puedes registrarte con usuario y contraseña, un token será generado y usado para validar al usuario cuando hagas login. Una vez hagas login se habilitará en el menú el acceso a nuestra app. Hasta aquí bien. <i>bien entre comillas se entiende, dejando a un lado todo tipo de validaciones que llevaría un formulario real tanto de registro como de login)</i></p>
+            <p>Como comprobarás la aplicación de notas y la membresia persisten por sí mismas pero no conjuntas. Escribo aquí lo que habrás visto o verás en el código, tal como se espera de la práctica final, puedes registrarte con usuario y contraseña, un token será generado y usado para validar al usuario cuando hagas login. Una vez hagas login se habilitará en el menú el acceso a nuestra app. Hasta aquí bien. (<i>bien entre comillas se entiende, dejando a un lado todo tipo de validaciones que llevaría un formulario real tanto de registro como de login)</i></p>
           </li>
           <li>
             <p>Una vez llegues a la App, funciona pero ella no sabe quien eres. He aquí lo que a mi modo de ver, <b>es lo más importante de toda la práctica y no he conseguido hacer.</b> Entiendo que el curso es una herramienta para aprender, para hacer autoevaluación y conocer mejor las debilidades de uno mismo. Es en este punto donde quiero volver a retomar el tema del test unitario.</p>
